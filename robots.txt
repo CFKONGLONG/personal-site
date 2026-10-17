@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /legacy/
+
+Sitemap: https://lingmissing.github.io/sitemap.xml

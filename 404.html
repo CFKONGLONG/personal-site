@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页面走丢了 · Elaine</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f2ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c0e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var saved = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = saved ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (e) {}
+  })();
+</script>
+<style>
+  .nf {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 48px 24px;
+    text-align: center;
+    background:
+      radial-gradient(40% 40% at 80% 15%, var(--seal-soft), transparent 70%),
+      var(--bg);
+  }
+  .nf__code {
+    font-family: var(--font-serif);
+    font-size: clamp(5rem, 18vw, 11rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+  .nf__code span { color: var(--seal); }
+  .nf__title {
+    margin-top: 18px;
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+  .nf__desc {
+    max-width: 30em;
+    margin: 14px auto 30px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .nf__links {
+    margin-top: 26px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+  .nf__links a { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .nf__links a:hover { color: var(--seal); border-color: var(--seal); }
+</style>
+</head>
+<body>
+  <main class="nf">
+    <div>
+      <p class="nf__code">4<span>0</span>4</p>
+      <h1 class="nf__title">这页纸被风吹走了</h1>
+      <p class="nf__desc">你要找的页面不在这里——可能是个旧地址，也可能只是我把它重新涂掉了。</p>
+      <a class="btn btn--primary" href="/">回到首页 <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <p class="nf__links">
+        <a href="/blog/">博客</a>
+        <a href="/legacy/">旧站</a>
+        <a href="https://github.com/lingmissing">GitHub</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>
