@@ -3,4 +3,4 @@ Allow: /
 # 旧站存档目录，不想被收录就留着这行
 Disallow: /legacy/
 
-Sitemap: https://cfkonglong.github.io/sitemap.xml
+Sitemap: https://cfkonglong.github.io/personal-site/sitemap.xml

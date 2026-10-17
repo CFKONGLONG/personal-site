@@ -4,7 +4,8 @@
 
 纯静态站点——一个 `index.html`、一份 CSS、一个 JS，没有构建步骤，也没有外部依赖。改完直接 push，GitHub Pages 就会发布。
 
-线上地址：<https://cfkonglong.github.io/>
+线上地址：<https://cfkonglong.github.io/personal-site/>
+仓库：<https://github.com/CFKONGLONG/personal-site>
 
 ## 目录结构
 
@@ -60,17 +61,18 @@ python -m http.server 8765
 
 ## 部署
 
-要发布到 `https://cfkonglong.github.io/`，仓库名必须是 **`CFKONGLONG.github.io`**：
+现在发布在 **`CFKONGLONG/personal-site`** 这个项目仓库里，网址是
+<https://cfkonglong.github.io/personal-site/>。
 
-1. 把这个仓库的内容推到 `CFKONGLONG/CFKONGLONG.github.io` 的默认分支；
-2. 仓库 → Settings → Pages → Source 选 *Deploy from a branch*，
-   分支选默认分支，目录选 **/ (root)**；
-3. 等一两分钟，访问 <https://cfkonglong.github.io/>。
+- 改完直接 `git push`，GitHub Pages 会自动重新构建（分支 `main`，目录 `/`）。
+- 项目站点的地址带 `/personal-site/` 前缀，所以 `index.html` 里的
+  `canonical`、`og:url`、`og:image` / `twitter:image`、JSON-LD 的 `url`，
+  以及 `robots.txt`、`sitemap.xml`、`404.html` 里都写了这个前缀。
+  以后想搬到根域名（`https://cfkonglong.github.io/`），必须把这些地方一起改掉，
+  否则分享卡片和 404 会指向旧地址。
 
-> 如果发布到别的仓库（比如 `CFKONGLONG/personal-site`，网址会带子路径），
-> 记得把 `index.html` 里的三处绝对地址改成新域名：
-> `<link rel="canonical">`、`og:url`、`og:image` / `twitter:image`，
-> 以及 `robots.txt`、`sitemap.xml` 里的域名。
+想放到根域名的话：把文件推到 `CFKONGLONG/CFKONGLONG.github.io` 仓库，
+再把上面这些地址里的 `/personal-site` 去掉即可。
 
 ## 站点细节
 
