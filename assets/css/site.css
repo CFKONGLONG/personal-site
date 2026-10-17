@@ -819,6 +819,16 @@ body.menu-open .menu-btn span:last-child {
 }
 .card--skill.is-visible .skill-bar i { transform: scaleX(1); }
 
+.skills-note {
+  max-width: 40em;
+  margin: 26px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--seal);
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--muted);
+}
+
 .card__index {
   position: absolute;
   top: 22px;
