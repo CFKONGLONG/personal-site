@@ -1,5 +1,5 @@
 /* =========================================================
-   时光的涂鸦墙 · 交互
+   陈科宏的个人主页 · 交互
    主题切换 / 移动端菜单 / 滚动显现 / 卡片聚光 / 导航高亮
    ========================================================= */
 (function () {
@@ -144,6 +144,57 @@
       });
     });
   }
+
+  /* ---------- 复制联系方式 ---------- */
+  function legacyCopy(text) {
+    var area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.top = '-1000px';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    var ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(area);
+    return ok;
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        if (!legacyCopy(text)) throw new Error('copy failed');
+      });
+    }
+    return legacyCopy(text)
+      ? Promise.resolve()
+      : Promise.reject(new Error('copy failed'));
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var label = btn.textContent;
+      copyText(btn.getAttribute('data-copy') || '')
+        .then(function () {
+          btn.textContent = '已复制';
+          btn.classList.add('is-copied');
+        })
+        .catch(function () {
+          btn.textContent = '复制失败';
+        })
+        .then(function () {
+          setTimeout(function () {
+            btn.textContent = label;
+            btn.classList.remove('is-copied');
+          }, 1600);
+        });
+    });
+  });
 
   /* ---------- 年份 ---------- */
   var year = document.getElementById('year');
